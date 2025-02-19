@@ -190,54 +190,42 @@ function App() {
   };
   return (
     <>
-      {" "}
       {isAuth ? (
         <div className="container py-5">
-          {" "}
           <div className="row">
-            {" "}
             <div className="col">
-              {" "}
               <div className="d-flex justify-content-between">
-                {" "}
-                <h2>產品列表</h2>{" "}
+                <h2>產品列表</h2>
                 <button
                   onClick={() => handleOpenProductModal("create")}
                   type="button"
                   className="btn btn-primary"
                 >
                   建立新的產品
-                </button>{" "}
-              </div>{" "}
+                </button>
+              </div>
               <table className="table">
-                {" "}
                 <thead>
-                  {" "}
                   <tr>
-                    {" "}
-                    <th scope="col">產品名稱</th> <th scope="col">原價</th>{" "}
-                    <th scope="col">售價</th> <th scope="col">是否啟用</th>{" "}
-                    <th scope="col"></th>{" "}
-                  </tr>{" "}
-                </thead>{" "}
+                    <th scope="col">產品名稱</th> <th scope="col">原價</th>
+                    <th scope="col">售價</th> <th scope="col">是否啟用</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
                 <tbody>
-                  {" "}
                   {products.map((product) => (
                     <tr key={product.id}>
-                      {" "}
-                      <th scope="row">{product.title}</th>{" "}
-                      <td>{product.origin_price}</td> <td>{product.price}</td>{" "}
+                      <th scope="row">{product.title}</th>
+                      <td>{product.origin_price}</td> <td>{product.price}</td>
                       <td>
                         {product.is_enabled ? (
                           <span className="text-success">啟用</span>
                         ) : (
                           <span>未啟用</span>
                         )}
-                      </td>{" "}
+                      </td>
                       <td>
-                        {" "}
                         <div className="btn-group">
-                          {" "}
                           <button
                             onClick={() =>
                               handleOpenProductModal("edit", product)
@@ -246,31 +234,28 @@ function App() {
                             className="btn btn-outline-primary btn-sm"
                           >
                             編輯
-                          </button>{" "}
+                          </button>
                           <button
                             onClick={() => handleOpenDelProductModal(product)}
                             type="button"
                             className="btn btn-outline-danger btn-sm"
                           >
                             刪除
-                          </button>{" "}
-                        </div>{" "}
-                      </td>{" "}
+                          </button>
+                        </div>
+                      </td>
                     </tr>
-                  ))}{" "}
-                </tbody>{" "}
-              </table>{" "}
-            </div>{" "}
-          </div>{" "}
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="d-flex flex-column justify-content-center align-items-center vh-100">
-          {" "}
-          <h1 className="mb-5">請先登入</h1>{" "}
+          <h1 className="mb-5">請先登入</h1>
           <form onSubmit={handleLogin} className="d-flex flex-column gap-3">
-            {" "}
             <div className="form-floating mb-3">
-              {" "}
               <input
                 name="username"
                 value={account.username}
@@ -279,11 +264,10 @@ function App() {
                 className="form-control"
                 id="username"
                 placeholder="name@example.com"
-              />{" "}
-              <label htmlFor="username">Email address</label>{" "}
-            </div>{" "}
+              />
+              <label htmlFor="username">Email address</label>
+            </div>
             <div className="form-floating">
-              {" "}
               <input
                 name="password"
                 value={account.password}
@@ -292,12 +276,12 @@ function App() {
                 className="form-control"
                 id="password"
                 placeholder="Password"
-              />{" "}
-              <label htmlFor="password">Password</label>{" "}
-            </div>{" "}
-            <button className="btn btn-primary">登入</button>{" "}
-          </form>{" "}
-          <p className="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>{" "}
+              />
+              <label htmlFor="password">Password</label>
+            </div>
+            <button className="btn btn-primary">登入</button>
+          </form>
+          <p className="mt-5 mb-3 text-muted">&copy; 2024~∞ - 六角學院</p>
         </div>
       )}
       <div
@@ -306,37 +290,27 @@ function App() {
         className="modal"
         style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
       >
-        {" "}
         <div className="modal-dialog modal-dialog-centered modal-xl">
-          {" "}
           <div className="modal-content border-0 shadow">
-            {" "}
             <div className="modal-header border-bottom">
-              {" "}
               <h5 className="modal-title fs-4">
                 {modalMode === "create" ? "新增產品" : "編輯產品"}
-              </h5>{" "}
+              </h5>
               <button
                 onClick={handleCloseProductModal}
                 type="button"
                 className="btn-close"
                 aria-label="Close"
-              ></button>{" "}
+              ></button>
             </div>
             <div className="modal-body p-4">
-              {" "}
               <div className="row g-4">
-                {" "}
                 <div className="col-md-4">
-                  {" "}
                   <div className="mb-4">
-                    {" "}
                     <label htmlFor="primary-image" className="form-label">
-                      {" "}
-                      主圖{" "}
-                    </label>{" "}
+                      主圖
+                    </label>
                     <div className="input-group">
-                      {" "}
                       <input
                         value={tempProduct.imageUrl}
                         onChange={handleModalInputChange}
@@ -345,27 +319,24 @@ function App() {
                         id="primary-image"
                         className="form-control"
                         placeholder="請輸入圖片連結"
-                      />{" "}
-                    </div>{" "}
+                      />
+                    </div>
                     <img
                       src={tempProduct.imageUrl}
                       alt={tempProduct.title}
                       className="img-fluid"
-                    />{" "}
+                    />
                   </div>
-                  {/* 副圖 */}{" "}
+                  {/* 副圖 */}
                   <div className="border border-2 border-dashed rounded-3 p-3">
-                    {" "}
                     {tempProduct.imagesUrl?.map((image, index) => (
                       <div key={index} className="mb-2">
-                        {" "}
                         <label
                           htmlFor={`imagesUrl-${index + 1}`}
                           className="form-label"
                         >
-                          {" "}
-                          副圖 {index + 1}{" "}
-                        </label>{" "}
+                          副圖 {index + 1}
+                        </label>
                         <input
                           value={image}
                           onChange={(e) => handleImageChange(e, index)}
@@ -373,18 +344,17 @@ function App() {
                           type="text"
                           placeholder={`圖片網址 ${index + 1}`}
                           className="form-control mb-2"
-                        />{" "}
+                        />
                         {image && (
                           <img
                             src={image}
                             alt={`副圖 ${index + 1}`}
                             className="img-fluid mb-2"
                           />
-                        )}{" "}
+                        )}
                       </div>
                     ))}
                     <div className="btn-group w-100">
-                      {" "}
                       {tempProduct.imagesUrl.length < 5 &&
                         tempProduct.imagesUrl[
                           tempProduct.imagesUrl.length - 1
@@ -403,18 +373,15 @@ function App() {
                         >
                           取消圖片
                         </button>
-                      )}{" "}
+                      )}
                     </div>
-                  </div>{" "}
+                  </div>
                 </div>
                 <div className="col-md-8">
-                  {" "}
                   <div className="mb-3">
-                    {" "}
                     <label htmlFor="title" className="form-label">
-                      {" "}
-                      標題{" "}
-                    </label>{" "}
+                      標題
+                    </label>
                     <input
                       value={tempProduct.title}
                       onChange={handleModalInputChange}
@@ -423,14 +390,12 @@ function App() {
                       type="text"
                       className="form-control"
                       placeholder="請輸入標題"
-                    />{" "}
+                    />
                   </div>
                   <div className="mb-3">
-                    {" "}
                     <label htmlFor="category" className="form-label">
-                      {" "}
-                      分類{" "}
-                    </label>{" "}
+                      分類
+                    </label>
                     <input
                       value={tempProduct.category}
                       onChange={handleModalInputChange}
@@ -439,14 +404,12 @@ function App() {
                       type="text"
                       className="form-control"
                       placeholder="請輸入分類"
-                    />{" "}
+                    />
                   </div>
                   <div className="mb-3">
-                    {" "}
                     <label htmlFor="unit" className="form-label">
-                      {" "}
-                      單位{" "}
-                    </label>{" "}
+                      單位
+                    </label>
                     <input
                       value={tempProduct.unit}
                       onChange={handleModalInputChange}
@@ -455,16 +418,13 @@ function App() {
                       type="text"
                       className="form-control"
                       placeholder="請輸入單位"
-                    />{" "}
+                    />
                   </div>
                   <div className="row g-3 mb-3">
-                    {" "}
                     <div className="col-6">
-                      {" "}
                       <label htmlFor="origin_price" className="form-label">
-                        {" "}
-                        原價{" "}
-                      </label>{" "}
+                        原價
+                      </label>
                       <input
                         value={tempProduct.origin_price}
                         onChange={handleModalInputChange}
@@ -473,14 +433,12 @@ function App() {
                         type="number"
                         className="form-control"
                         placeholder="請輸入原價"
-                      />{" "}
-                    </div>{" "}
+                      />
+                    </div>
                     <div className="col-6">
-                      {" "}
                       <label htmlFor="price" className="form-label">
-                        {" "}
-                        售價{" "}
-                      </label>{" "}
+                        售價
+                      </label>
                       <input
                         value={tempProduct.price}
                         onChange={handleModalInputChange}
@@ -489,15 +447,13 @@ function App() {
                         type="number"
                         className="form-control"
                         placeholder="請輸入售價"
-                      />{" "}
-                    </div>{" "}
+                      />
+                    </div>
                   </div>
                   <div className="mb-3">
-                    {" "}
                     <label htmlFor="description" className="form-label">
-                      {" "}
-                      產品描述{" "}
-                    </label>{" "}
+                      產品描述
+                    </label>
                     <textarea
                       value={tempProduct.description}
                       onChange={handleModalInputChange}
@@ -506,14 +462,12 @@ function App() {
                       className="form-control"
                       rows={4}
                       placeholder="請輸入產品描述"
-                    ></textarea>{" "}
+                    ></textarea>
                   </div>
                   <div className="mb-3">
-                    {" "}
                     <label htmlFor="content" className="form-label">
-                      {" "}
-                      說明內容{" "}
-                    </label>{" "}
+                      說明內容
+                    </label>
                     <textarea
                       value={tempProduct.content}
                       onChange={handleModalInputChange}
@@ -522,10 +476,9 @@ function App() {
                       className="form-control"
                       rows={4}
                       placeholder="請輸入說明內容"
-                    ></textarea>{" "}
+                    ></textarea>
                   </div>
                   <div className="form-check">
-                    {" "}
                     <input
                       checked={tempProduct.is_enabled}
                       onChange={handleModalInputChange}
@@ -533,36 +486,32 @@ function App() {
                       type="checkbox"
                       className="form-check-input"
                       id="isEnabled"
-                    />{" "}
+                    />
                     <label className="form-check-label" htmlFor="isEnabled">
-                      {" "}
-                      是否啟用{" "}
-                    </label>{" "}
-                  </div>{" "}
-                </div>{" "}
-              </div>{" "}
+                      是否啟用
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="modal-footer border-top bg-light">
-              {" "}
               <button
                 onClick={handleCloseProductModal}
                 type="button"
                 className="btn btn-secondary"
               >
-                {" "}
-                取消{" "}
-              </button>{" "}
+                取消
+              </button>
               <button
                 onClick={handleUpdateProduct}
                 type="button"
                 className="btn btn-primary"
               >
-                {" "}
-                確認{" "}
-              </button>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
+                確認
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         ref={delProductModalRef}
@@ -571,51 +520,41 @@ function App() {
         tabIndex="-1"
         style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
       >
-        {" "}
         <div className="modal-dialog">
-          {" "}
           <div className="modal-content">
-            {" "}
             <div className="modal-header">
-              {" "}
-              <h1 className="modal-title fs-5">刪除產品</h1>{" "}
+              <h1 className="modal-title fs-5">刪除產品</h1>
               <button
                 onClick={handleCloseDelProductModal}
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>{" "}
-            </div>{" "}
+              ></button>
+            </div>
             <div className="modal-body">
-              {" "}
-              你是否要刪除{" "}
-              <span className="text-danger fw-bold">
-                {tempProduct.title}
-              </span>{" "}
-            </div>{" "}
+              你是否要刪除
+              <span className="text-danger fw-bold">{tempProduct.title}</span>
+            </div>
             <div className="modal-footer">
-              {" "}
               <button
                 onClick={handleCloseDelProductModal}
                 type="button"
                 className="btn btn-secondary"
               >
-                {" "}
-                取消{" "}
-              </button>{" "}
+                取消
+              </button>
               <button
                 onClick={handleDeleteProduct}
                 type="button"
                 className="btn btn-danger"
               >
-                {" "}
-                刪除{" "}
-              </button>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
-      </div>{" "}
+                刪除
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
